@@ -34,6 +34,14 @@ Pass options to `criticalCSSParser({ ... })`.
 -   `enableGoogleFonts` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set _true_ to except Google Font styles _(default: `false`)_
 -   `entrypoint` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Root of your application _(default: '')_ **REQUIRED FOR type === localServer**
 
+**criticalCSSParser({...}) returns:**
+
+<Promise<{ critical, rest }>>
+
+**_critical_** - above-the-fold CSS. These styles you can put into your `<style>` tag.
+
+**_rest_** - other CSS. You can lazy-load the rest like [this](https://web.dev/defer-non-critical-css/).
+
 ## Examples
 
 ### HTML and CSS
