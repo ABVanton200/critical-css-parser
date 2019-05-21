@@ -63,3 +63,11 @@ typings/
 *.lock
 
 package-lock.json
+
+*.gitignore
+*.npmignore
+*.babelrc
+
+test/
+src/
+www/
