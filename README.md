@@ -1,15 +1,17 @@
 # critical-css-parser
 
-Critical-css-parser allows you to receive critical (above-the-fold) and rest CSS.
-It might be helpful to speed up initial rendering of a web page.
+**Critical-css-parser** allows you to receive critical (above-the-fold) and rest CSS.
+It might be helpful to speed up initial rendering of a web page. [More information](https://web.dev/defer-non-critical-css/)
 
-Critical-css-parser uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [DropCSS](https://github.com/leeoniya/dropcss) under the hood, so it also supports adaptive design.
+Critical-css-parser uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [DropCSS](https://github.com/leeoniya/dropcss) under the hood, so it also supports **adaptive design**.
 
 ### Installation
 
 ```sh
 npm install --save-dev critical-css-parser
+
 // or
+
 yarn add --dev critical-css-parser
 ```
 ## Usage

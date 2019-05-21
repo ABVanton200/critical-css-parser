@@ -1,9 +1,12 @@
 {
   "name": "critical-css-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get critical (above-the-fold) and rest CSS using Puppeteer.",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/ABVanton200/critical-css-parser",
+  "bugs": {
+    "url": "https://github.com/ABVanton200/critical-css-parser/issues"
+  },
   "author": "Anton Babakhin <abvanton@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -13,7 +16,8 @@
     "puppeteer",
     "optimization",
     "performance",
-    "dropcss"
+    "dropcss",
+	"adaptive design"
   ],
   "scripts": {
     "build": "babel src -d dist",
