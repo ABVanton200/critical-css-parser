@@ -26,7 +26,7 @@ Pass options to `criticalCSSParser({ ... })`.
 
 **Properties**
 
--   `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** One of: _HTML_, _URL_ or _localServer_. **REQUIRED**
+-   `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** One of: **_HTML_**, **_URL_** or **_localServer_**. **REQUIRED**
 -   `html` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your custom html code _(default: '')_ **REQUIRED FOR type === HTML**
 -   `css` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your custom css code _(default: '')_ **REQUIRED FOR type === HTML**
 -   `whitelist` **[RegExp](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** Whitelist of the critical CSS _(default: `/#fooBazBarAboveTheFold8917/`)_
