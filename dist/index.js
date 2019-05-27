@@ -36,7 +36,7 @@ function _criticalCSSParser() {
   _criticalCSSParser = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee3(options) {
-    var _options$html, html, _options$css, css, _options$whitelist, whitelist, browser, page, page2, aboveTheFold, aboveTheFoldMob, result, _options$URL, URL, _options$enableGoogle, enableGoogleFonts, _options$whitelist2, _whitelist, _browser, _page, styleHrefs, _page2, _aboveTheFold, _aboveTheFoldMob, _css, _result, _options$entrypoint, entrypoint, _options$enableGoogle2, _enableGoogleFonts, _options$whitelist3, _whitelist2, server, _browser2, _page3, _styleHrefs, _page4, _aboveTheFold2, _aboveTheFoldMob2, _css2, _result2;
+    var _options$html, html, _options$css, css, _options$whitelist, whitelist, browser, page, page2, aboveTheFold, aboveTheFoldMob, result, _options$URL, URL, _options$enableGoogle, enableGoogleFonts, _options$whitelist2, _whitelist, _browser, _page, styleHrefs, _page2, _aboveTheFold, _aboveTheFoldMob, _css, _result, _options$entrypoint, entrypoint, _options$filename, filename, _options$enableGoogle2, _enableGoogleFonts, _options$whitelist3, _whitelist2, server, _browser2, _page3, _styleHrefs, _page4, _aboveTheFold2, _aboveTheFoldMob2, _css2, _result2;
 
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -247,7 +247,7 @@ function _criticalCSSParser() {
               break;
             }
 
-            _options$entrypoint = options.entrypoint, entrypoint = _options$entrypoint === void 0 ? '' : _options$entrypoint, _options$enableGoogle2 = options.enableGoogleFonts, _enableGoogleFonts = _options$enableGoogle2 === void 0 ? 0 : _options$enableGoogle2, _options$whitelist3 = options.whitelist, _whitelist2 = _options$whitelist3 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist3; // Create local server to open the page
+            _options$entrypoint = options.entrypoint, entrypoint = _options$entrypoint === void 0 ? '' : _options$entrypoint, _options$filename = options.filename, filename = _options$filename === void 0 ? 'index.html' : _options$filename, _options$enableGoogle2 = options.enableGoogleFonts, _enableGoogleFonts = _options$enableGoogle2 === void 0 ? 0 : _options$enableGoogle2, _options$whitelist3 = options.whitelist, _whitelist2 = _options$whitelist3 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist3; // Create local server to open the page
 
             server = httpServer.createServer({
               root: entrypoint
@@ -264,7 +264,7 @@ function _criticalCSSParser() {
           case 82:
             _page3 = _context3.sent;
             _context3.next = 85;
-            return _page3["goto"]('http://127.0.0.1:6543/', {
+            return _page3["goto"]("http://127.0.0.1:6543/".concat(filename), {
               waitUntil: 'networkidle2'
             });
 
@@ -299,7 +299,7 @@ function _criticalCSSParser() {
           case 93:
             _page4 = _context3.sent;
             _context3.next = 96;
-            return _page4["goto"]('http://127.0.0.1:6543/', {
+            return _page4["goto"]("http://127.0.0.1:6543/".concat(filename), {
               waitUntil: 'networkidle2'
             });
 

@@ -91,6 +91,7 @@ describe('localServer', function() {
         const res = await criticalCSSParser({
             type: 'localServer',
             entrypoint: './www',
+            filename: 'index.html',
             enableGoogleFonts: false
         });
 

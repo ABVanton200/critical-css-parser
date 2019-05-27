@@ -33,6 +33,7 @@ Pass options to `criticalCSSParser({ ... })`.
 -   `URL` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** URL of the page you need to optimize _(default: '')_ **REQUIRED FOR type === URL**
 -   `enableGoogleFonts` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set _true_ to except Google Font styles _(default: `false`)_
 -   `entrypoint` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Root of your application _(default: '')_ **REQUIRED FOR type === localServer**
+-   `filename` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your index file _(default: 'index.html')_
 
 ### criticalCSSParser({...}) returns:
 
@@ -114,6 +115,7 @@ const criticalCSSParser = require('critical-css-parser');
     const result = await criticalCSSParser({
         type: 'localServer',
         entrypoint: './www',
+        filename: 'index.html',
         enableGoogleFonts: false
     });
 

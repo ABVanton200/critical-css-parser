@@ -78,7 +78,7 @@ async function criticalCSSParser( options ) {
 		return result;	
 		
 	} else if( options.type === 'localServer' ) {
-		const { entrypoint = '', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/ } = options;
+		const { entrypoint = '', filename = 'index.html', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/ } = options;
 		
 		// Create local server to open the page
 		const server = httpServer.createServer({root: entrypoint});
@@ -88,7 +88,7 @@ async function criticalCSSParser( options ) {
 
 		// Puppeteer page with desktop version
 		const page = await browser.newPage();	
-		await page.goto('http://127.0.0.1:6543/', { waitUntil: 'networkidle2' });		
+		await page.goto(`http://127.0.0.1:6543/${filename}`, { waitUntil: 'networkidle2' });		
 		await page.setViewport({ width: 1920, height: 1200 });
 		let styleHrefs = await page.$$eval('link[rel=stylesheet]', els => Array.from(els).map(s => s.href));
 		if( !enableGoogleFonts ) {
@@ -97,7 +97,7 @@ async function criticalCSSParser( options ) {
 
 		// Puppeteer page with mobile version
 		const page2 = await browser.newPage();
-		await page2.goto('http://127.0.0.1:6543/', { waitUntil: 'networkidle2' });		
+		await page2.goto(`http://127.0.0.1:6543/${filename}`, { waitUntil: 'networkidle2' });		
 		await page2.setViewport({ width: 480, height: 650, isMobile: true, hasTouch: true }); 
 		
 		const aboveTheFold = await aboveTheFoldHTML( page, 1200 );
