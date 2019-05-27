@@ -19,7 +19,7 @@ const { get } = require('axios');
  */
 async function criticalCSSParser( options ) {
   	if( options.type === 'HTML' ) {
-		const { html = '', css = '', whitelist = /#fooBazBarAboveTheFold8917/ } = options;
+		const { html = '', css = '', whitelist = /#fooBazBarAboveTheFold8917/, minify = false } = options;
 		
 		const browser = await puppeteer.launch();
 
@@ -40,11 +40,11 @@ async function criticalCSSParser( options ) {
 
 		await browser.close();
 
-		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist );
+		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist, minify );
 		return result;
 
 	} else if( options.type === 'URL' ) {
-		const { URL = '', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/ } = options;
+		const { URL = '', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/, minify = false } = options;
 		
 		const browser = await puppeteer.launch();
 
@@ -74,11 +74,11 @@ async function criticalCSSParser( options ) {
 			css += data;
 		}));
 
-		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist );
+		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist, minify );
 		return result;	
 		
 	} else if( options.type === 'localServer' ) {
-		const { entrypoint = '', filename = 'index.html', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/ } = options;
+		const { entrypoint = '', filename = 'index.html', enableGoogleFonts = 0, whitelist = /#fooBazBarAboveTheFold8917/, minify = false } = options;
 		
 		// Create local server to open the page
 		const server = httpServer.createServer({root: entrypoint});
@@ -114,7 +114,7 @@ async function criticalCSSParser( options ) {
 
 		server.close();
 
-		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist );
+		const result = extract( aboveTheFold, aboveTheFoldMob, css, whitelist, minify );
 		return result;	
 	}
 }
@@ -151,7 +151,7 @@ async function aboveTheFoldHTML( page, height ) {
  * @param  {RegExp} whitelist Regular Expression of needed tags 
  * @return {Promise<{ critical: string, rest: string }>} Result object with critical css and rest css
  */
-function extract( deskHTML, mobHTML, css, whitelist ) {
+function extract( deskHTML, mobHTML, css, whitelist, minify ) {
 	// Receive above-the-fold css-selectors of desktop version
 	let resDesk = dropcss({
 		html: deskHTML,
@@ -193,6 +193,12 @@ function extract( deskHTML, mobHTML, css, whitelist ) {
 		css,
 		shouldDrop: sel => selectors.has( sel ),
 	});
+
+	if ( minify ) {
+		const csso = require('csso');
+		above.css = csso.minify( above.css ).css;
+		rest.css = csso.minify( rest.css ).css;
+	}
 
 	return { critical: above.css, rest: rest.css };
 }

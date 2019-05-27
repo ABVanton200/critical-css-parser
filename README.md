@@ -34,6 +34,7 @@ Pass options to `criticalCSSParser({ ... })`.
 -   `enableGoogleFonts` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set _true_ to except Google Font styles _(default: `false`)_
 -   `entrypoint` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Root of your application _(default: '')_ **REQUIRED FOR type === localServer**
 -   `filename` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your index file _(default: 'index.html')_
+-   `minify` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set _true_ to minify resulting styles _(default: `false`)_
 
 ### criticalCSSParser({...}) returns:
 
@@ -75,10 +76,11 @@ const css = `
     const result = await criticalCSSParser({
         type: 'HTML',
         html,
-        css
+        css,
+        minify: true
     });
 
-    console.log(result.critical); // 'p:hover a:first-child{color: red;}'
+    console.log(result.critical); // 'p:hover a:first-child{color:red}'
 
     console.log(result.rest); // '.card{padding: 8px;}'
 

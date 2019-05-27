@@ -36,7 +36,7 @@ function _criticalCSSParser() {
   _criticalCSSParser = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee3(options) {
-    var _options$html, html, _options$css, css, _options$whitelist, whitelist, browser, page, page2, aboveTheFold, aboveTheFoldMob, result, _options$URL, URL, _options$enableGoogle, enableGoogleFonts, _options$whitelist2, _whitelist, _browser, _page, styleHrefs, _page2, _aboveTheFold, _aboveTheFoldMob, _css, _result, _options$entrypoint, entrypoint, _options$filename, filename, _options$enableGoogle2, _enableGoogleFonts, _options$whitelist3, _whitelist2, server, _browser2, _page3, _styleHrefs, _page4, _aboveTheFold2, _aboveTheFoldMob2, _css2, _result2;
+    var _options$html, html, _options$css, css, _options$whitelist, whitelist, _options$minify, minify, browser, page, page2, aboveTheFold, aboveTheFoldMob, result, _options$URL, URL, _options$enableGoogle, enableGoogleFonts, _options$whitelist2, _whitelist, _options$minify2, _minify, _browser, _page, styleHrefs, _page2, _aboveTheFold, _aboveTheFoldMob, _css, _result, _options$entrypoint, entrypoint, _options$filename, filename, _options$enableGoogle2, _enableGoogleFonts, _options$whitelist3, _whitelist2, _options$minify3, _minify2, server, _browser2, _page3, _styleHrefs, _page4, _aboveTheFold2, _aboveTheFoldMob2, _css2, _result2;
 
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -47,7 +47,7 @@ function _criticalCSSParser() {
               break;
             }
 
-            _options$html = options.html, html = _options$html === void 0 ? '' : _options$html, _options$css = options.css, css = _options$css === void 0 ? '' : _options$css, _options$whitelist = options.whitelist, whitelist = _options$whitelist === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist;
+            _options$html = options.html, html = _options$html === void 0 ? '' : _options$html, _options$css = options.css, css = _options$css === void 0 ? '' : _options$css, _options$whitelist = options.whitelist, whitelist = _options$whitelist === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist, _options$minify = options.minify, minify = _options$minify === void 0 ? false : _options$minify;
             _context3.next = 4;
             return puppeteer.launch();
 
@@ -117,7 +117,7 @@ function _criticalCSSParser() {
             return browser.close();
 
           case 31:
-            result = extract(aboveTheFold, aboveTheFoldMob, css, whitelist);
+            result = extract(aboveTheFold, aboveTheFoldMob, css, whitelist, minify);
             return _context3.abrupt("return", result);
 
           case 35:
@@ -126,7 +126,7 @@ function _criticalCSSParser() {
               break;
             }
 
-            _options$URL = options.URL, URL = _options$URL === void 0 ? '' : _options$URL, _options$enableGoogle = options.enableGoogleFonts, enableGoogleFonts = _options$enableGoogle === void 0 ? 0 : _options$enableGoogle, _options$whitelist2 = options.whitelist, _whitelist = _options$whitelist2 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist2;
+            _options$URL = options.URL, URL = _options$URL === void 0 ? '' : _options$URL, _options$enableGoogle = options.enableGoogleFonts, enableGoogleFonts = _options$enableGoogle === void 0 ? 0 : _options$enableGoogle, _options$whitelist2 = options.whitelist, _whitelist = _options$whitelist2 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist2, _options$minify2 = options.minify, _minify = _options$minify2 === void 0 ? false : _options$minify2;
             _context3.next = 39;
             return puppeteer.launch();
 
@@ -238,7 +238,7 @@ function _criticalCSSParser() {
             }()));
 
           case 69:
-            _result = extract(_aboveTheFold, _aboveTheFoldMob, _css, _whitelist);
+            _result = extract(_aboveTheFold, _aboveTheFoldMob, _css, _whitelist, _minify);
             return _context3.abrupt("return", _result);
 
           case 73:
@@ -247,7 +247,7 @@ function _criticalCSSParser() {
               break;
             }
 
-            _options$entrypoint = options.entrypoint, entrypoint = _options$entrypoint === void 0 ? '' : _options$entrypoint, _options$filename = options.filename, filename = _options$filename === void 0 ? 'index.html' : _options$filename, _options$enableGoogle2 = options.enableGoogleFonts, _enableGoogleFonts = _options$enableGoogle2 === void 0 ? 0 : _options$enableGoogle2, _options$whitelist3 = options.whitelist, _whitelist2 = _options$whitelist3 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist3; // Create local server to open the page
+            _options$entrypoint = options.entrypoint, entrypoint = _options$entrypoint === void 0 ? '' : _options$entrypoint, _options$filename = options.filename, filename = _options$filename === void 0 ? 'index.html' : _options$filename, _options$enableGoogle2 = options.enableGoogleFonts, _enableGoogleFonts = _options$enableGoogle2 === void 0 ? 0 : _options$enableGoogle2, _options$whitelist3 = options.whitelist, _whitelist2 = _options$whitelist3 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist3, _options$minify3 = options.minify, _minify2 = _options$minify3 === void 0 ? false : _options$minify3; // Create local server to open the page
 
             server = httpServer.createServer({
               root: entrypoint
@@ -365,7 +365,7 @@ function _criticalCSSParser() {
 
           case 109:
             server.close();
-            _result2 = extract(_aboveTheFold2, _aboveTheFoldMob2, _css2, _whitelist2);
+            _result2 = extract(_aboveTheFold2, _aboveTheFoldMob2, _css2, _whitelist2, _minify2);
             return _context3.abrupt("return", _result2);
 
           case 112:
@@ -432,7 +432,7 @@ function _aboveTheFoldHTML() {
   return _aboveTheFoldHTML.apply(this, arguments);
 }
 
-function extract(deskHTML, mobHTML, css, whitelist) {
+function extract(deskHTML, mobHTML, css, whitelist, minify) {
   // Receive above-the-fold css-selectors of desktop version
   var resDesk = dropcss({
     html: deskHTML,
@@ -474,6 +474,14 @@ function extract(deskHTML, mobHTML, css, whitelist) {
       return selectors.has(sel);
     }
   });
+
+  if (minify) {
+    var csso = require('csso');
+
+    above.css = csso.minify(above.css).css;
+    rest.css = csso.minify(rest.css).css;
+  }
+
   return {
     critical: above.css,
     rest: rest.css
