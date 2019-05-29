@@ -43,7 +43,7 @@ function _criticalCSSParser() {
         switch (_context3.prev = _context3.next) {
           case 0:
             if (!(options.type === 'HTML')) {
-              _context3.next = 35;
+              _context3.next = 39;
               break;
             }
 
@@ -59,42 +59,50 @@ function _criticalCSSParser() {
           case 7:
             page = _context3.sent;
             _context3.next = 10;
+            return page.setDefaultNavigationTimeout(60000);
+
+          case 10:
+            _context3.next = 12;
             return page.setContent(html, {
               waitUntil: 'networkidle2'
             });
 
-          case 10:
-            _context3.next = 12;
+          case 12:
+            _context3.next = 14;
             return page.addStyleTag({
               content: css
             });
 
-          case 12:
-            _context3.next = 14;
+          case 14:
+            _context3.next = 16;
             return page.setViewport({
               width: 1920,
               height: 1200
             });
 
-          case 14:
-            _context3.next = 16;
+          case 16:
+            _context3.next = 18;
             return browser.newPage();
 
-          case 16:
+          case 18:
             page2 = _context3.sent;
-            _context3.next = 19;
+            _context3.next = 21;
+            return page2.setDefaultNavigationTimeout(60000);
+
+          case 21:
+            _context3.next = 23;
             return page2.setContent(html, {
               waitUntil: 'networkidle2'
             });
 
-          case 19:
-            _context3.next = 21;
+          case 23:
+            _context3.next = 25;
             return page2.addStyleTag({
               content: css
             });
 
-          case 21:
-            _context3.next = 23;
+          case 25:
+            _context3.next = 27;
             return page2.setViewport({
               width: 480,
               height: 650,
@@ -102,62 +110,66 @@ function _criticalCSSParser() {
               hasTouch: true
             });
 
-          case 23:
-            _context3.next = 25;
+          case 27:
+            _context3.next = 29;
             return aboveTheFoldHTML(page, 1200);
 
-          case 25:
+          case 29:
             aboveTheFold = _context3.sent;
-            _context3.next = 28;
+            _context3.next = 32;
             return aboveTheFoldHTML(page2, 650);
 
-          case 28:
+          case 32:
             aboveTheFoldMob = _context3.sent;
-            _context3.next = 31;
+            _context3.next = 35;
             return browser.close();
 
-          case 31:
+          case 35:
             result = extract(aboveTheFold, aboveTheFoldMob, css, whitelist, minify);
             return _context3.abrupt("return", result);
 
-          case 35:
+          case 39:
             if (!(options.type === 'URL')) {
-              _context3.next = 73;
+              _context3.next = 81;
               break;
             }
 
             _options$URL = options.URL, URL = _options$URL === void 0 ? '' : _options$URL, _options$enableGoogle = options.enableGoogleFonts, enableGoogleFonts = _options$enableGoogle === void 0 ? 0 : _options$enableGoogle, _options$whitelist2 = options.whitelist, _whitelist = _options$whitelist2 === void 0 ? /#fooBazBarAboveTheFold8917/ : _options$whitelist2, _options$minify2 = options.minify, _minify = _options$minify2 === void 0 ? false : _options$minify2;
-            _context3.next = 39;
+            _context3.next = 43;
             return puppeteer.launch();
 
-          case 39:
+          case 43:
             _browser = _context3.sent;
-            _context3.next = 42;
+            _context3.next = 46;
             return _browser.newPage();
 
-          case 42:
+          case 46:
             _page = _context3.sent;
-            _context3.next = 45;
+            _context3.next = 49;
+            return _page.setDefaultNavigationTimeout(60000);
+
+          case 49:
+            _context3.next = 51;
             return _page["goto"](URL, {
               waitUntil: 'networkidle2'
             });
 
-          case 45:
-            _context3.next = 47;
+          case 51:
+            _context3.next = 53;
             return _page.setViewport({
               width: 1920,
               height: 1200
             });
 
-          case 47:
-            _context3.next = 49;
+          case 53:
+            _context3.next = 55;
             return _page.$$eval('link[rel=stylesheet]', function (els) {
               return Array.from(els).map(function (s) {
                 return s.href;
               });
             });
 
-          case 49:
+          case 55:
             styleHrefs = _context3.sent;
 
             if (!enableGoogleFonts) {
@@ -167,18 +179,22 @@ function _criticalCSSParser() {
             } // Puppeteer page with mobile version
 
 
-            _context3.next = 53;
+            _context3.next = 59;
             return _browser.newPage();
 
-          case 53:
+          case 59:
             _page2 = _context3.sent;
-            _context3.next = 56;
+            _context3.next = 62;
+            return _page2.setDefaultNavigationTimeout(60000);
+
+          case 62:
+            _context3.next = 64;
             return _page2["goto"](URL, {
               waitUntil: 'networkidle2'
             });
 
-          case 56:
-            _context3.next = 58;
+          case 64:
+            _context3.next = 66;
             return _page2.setViewport({
               width: 480,
               height: 650,
@@ -186,24 +202,24 @@ function _criticalCSSParser() {
               hasTouch: true
             });
 
-          case 58:
-            _context3.next = 60;
+          case 66:
+            _context3.next = 68;
             return aboveTheFoldHTML(_page, 1200);
 
-          case 60:
+          case 68:
             _aboveTheFold = _context3.sent;
-            _context3.next = 63;
+            _context3.next = 71;
             return aboveTheFoldHTML(_page2, 650);
 
-          case 63:
+          case 71:
             _aboveTheFoldMob = _context3.sent;
-            _context3.next = 66;
+            _context3.next = 74;
             return _browser.close();
 
-          case 66:
+          case 74:
             // Concatenate all styles 
             _css = '';
-            _context3.next = 69;
+            _context3.next = 77;
             return Promise.all(styleHrefs.map(
             /*#__PURE__*/
             function () {
@@ -237,13 +253,13 @@ function _criticalCSSParser() {
               };
             }()));
 
-          case 69:
+          case 77:
             _result = extract(_aboveTheFold, _aboveTheFoldMob, _css, _whitelist, _minify);
             return _context3.abrupt("return", _result);
 
-          case 73:
+          case 81:
             if (!(options.type === 'localServer')) {
-              _context3.next = 112;
+              _context3.next = 124;
               break;
             }
 
@@ -253,37 +269,41 @@ function _criticalCSSParser() {
               root: entrypoint
             });
             server.listen(6543);
-            _context3.next = 79;
+            _context3.next = 87;
             return puppeteer.launch();
 
-          case 79:
+          case 87:
             _browser2 = _context3.sent;
-            _context3.next = 82;
+            _context3.next = 90;
             return _browser2.newPage();
 
-          case 82:
+          case 90:
             _page3 = _context3.sent;
-            _context3.next = 85;
+            _context3.next = 93;
+            return _page3.setDefaultNavigationTimeout(60000);
+
+          case 93:
+            _context3.next = 95;
             return _page3["goto"]("http://127.0.0.1:6543/".concat(filename), {
               waitUntil: 'networkidle2'
             });
 
-          case 85:
-            _context3.next = 87;
+          case 95:
+            _context3.next = 97;
             return _page3.setViewport({
               width: 1920,
               height: 1200
             });
 
-          case 87:
-            _context3.next = 89;
+          case 97:
+            _context3.next = 99;
             return _page3.$$eval('link[rel=stylesheet]', function (els) {
               return Array.from(els).map(function (s) {
                 return s.href;
               });
             });
 
-          case 89:
+          case 99:
             _styleHrefs = _context3.sent;
 
             if (!_enableGoogleFonts) {
@@ -293,18 +313,22 @@ function _criticalCSSParser() {
             } // Puppeteer page with mobile version
 
 
-            _context3.next = 93;
+            _context3.next = 103;
             return _browser2.newPage();
 
-          case 93:
+          case 103:
             _page4 = _context3.sent;
-            _context3.next = 96;
+            _context3.next = 106;
+            return _page4.setDefaultNavigationTimeout(60000);
+
+          case 106:
+            _context3.next = 108;
             return _page4["goto"]("http://127.0.0.1:6543/".concat(filename), {
               waitUntil: 'networkidle2'
             });
 
-          case 96:
-            _context3.next = 98;
+          case 108:
+            _context3.next = 110;
             return _page4.setViewport({
               width: 480,
               height: 650,
@@ -312,24 +336,24 @@ function _criticalCSSParser() {
               hasTouch: true
             });
 
-          case 98:
-            _context3.next = 100;
+          case 110:
+            _context3.next = 112;
             return aboveTheFoldHTML(_page3, 1200);
 
-          case 100:
+          case 112:
             _aboveTheFold2 = _context3.sent;
-            _context3.next = 103;
+            _context3.next = 115;
             return aboveTheFoldHTML(_page4, 650);
 
-          case 103:
+          case 115:
             _aboveTheFoldMob2 = _context3.sent;
-            _context3.next = 106;
+            _context3.next = 118;
             return _browser2.close();
 
-          case 106:
+          case 118:
             // Concatenate all styles 
             _css2 = '';
-            _context3.next = 109;
+            _context3.next = 121;
             return Promise.all(_styleHrefs.map(
             /*#__PURE__*/
             function () {
@@ -363,12 +387,12 @@ function _criticalCSSParser() {
               };
             }()));
 
-          case 109:
+          case 121:
             server.close();
             _result2 = extract(_aboveTheFold2, _aboveTheFoldMob2, _css2, _whitelist2, _minify2);
             return _context3.abrupt("return", _result2);
 
-          case 112:
+          case 124:
           case "end":
             return _context3.stop();
         }
