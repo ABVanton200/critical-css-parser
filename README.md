@@ -1,12 +1,14 @@
 # critical-css-parser
 
-**Critical-css-parser** allows you to receive critical (**above-the-fold**) and the rest CSS.
-It might be helpful to speed up initial rendering of a web page. **[More information](https://web.dev/defer-non-critical-css/)**.
+[![install size](https://packagephobia.now.sh/badge?p=critical-css-parser)](https://packagephobia.now.sh/result?p=critical-css-parser)
+
+> **Critical-css-parser** allows you to receive critical (**above-the-fold**) and the rest CSS.
+> It might be helpful to speed up initial rendering of a web page. **[More information](https://web.dev/defer-non-critical-css/)**.
 
 There are 3 types of input information: **HTML and CSS**, **URL** and **localServer**.
 
-**Critical-css-parser** uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [DropCSS](https://github.com/leeoniya/dropcss) under the hood, so it also supports **adaptive design** (both desktop and mobile versions).
-It also supports minifying (by [CSSO](https://github.com/css/csso)).
+> **Critical-css-parser** uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [DropCSS](https://github.com/leeoniya/dropcss) under the hood, so IT ALSO SUPPORTS ADAPTIVE DESIGN (BOTH DESKTOP AND MOBILE VERSIONS)!
+> It also supports minifying (by [CSSO](https://github.com/css/csso)).
 
 ### Installation
 
