@@ -10,6 +10,10 @@ There are 3 types of input information: **HTML and CSS**, **URL** and **localSer
 > **Critical-css-parser** uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [DropCSS](https://github.com/leeoniya/dropcss) under the hood, so IT ALSO SUPPORTS ADAPTIVE DESIGN (BOTH DESKTOP AND MOBILE VERSIONS)!
 > It also supports minifying (by [CSSO](https://github.com/css/csso)).
 
+---
+This library is part of other projects: [critical-css-inliner](https://github.com/ABVanton200/critical-css-inliner), [webpack-critical-css-inliner](https://github.com/ABVanton200/webpack-critical-css-inliner)
+---
+
 ### Installation
 
 ```sh

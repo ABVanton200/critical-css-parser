@@ -1,8 +1,11 @@
 {
   "name": "critical-css-parser",
-  "version": "0.2.2",
-  "description": "Get critical (above-the-fold) and rest CSS using Puppeteer.",
-  "main": "index.js",
+  "version": "0.2.3",
+  "description": "Get critical (above-the-fold) and the rest CSS using Puppeteer.",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
   "repository": "https://github.com/ABVanton200/critical-css-parser",
   "bugs": {
     "url": "https://github.com/ABVanton200/critical-css-parser/issues"
@@ -21,23 +24,20 @@
     "adaptive design"
   ],
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "test": "mocha --timeout 150000"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "csso": "^3.5.1",
     "dropcss": "^1.0.10",
     "http-server": "^0.11.1",
     "puppeteer": "^1.17.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
     "assert": "^2.0.0",
-    "babel-plugin-transform-regenerator": "^6.26.0",
+    "microbundle": "^0.11.0",
     "mocha": "^6.1.4"
   }
 }

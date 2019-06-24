@@ -5,8 +5,6 @@
  * critical-css-parser
  */
 
-import 'babel-polyfill';
-
 const httpServer = require('http-server');
 const puppeteer = require('puppeteer');
 const dropcss = require('dropcss');
