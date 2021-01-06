@@ -1,6 +1,6 @@
 {
   "name": "critical-css-parser",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Get critical (above-the-fold) and the rest CSS using Puppeteer.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -29,15 +29,15 @@
     "test": "mocha --timeout 150000"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "csso": "^3.5.1",
-    "dropcss": "^1.0.10",
-    "http-server": "^0.11.1",
-    "puppeteer": "^1.17.0"
+    "axios": "^0.21.1",
+    "csso": "^4.2.0",
+    "dropcss": "^1.0.16",
+    "http-server": "^0.12.3",
+    "puppeteer": "^5.5.0"
   },
   "devDependencies": {
     "assert": "^2.0.0",
-    "microbundle": "^0.11.0",
-    "mocha": "^6.1.4"
+    "microbundle": "^0.13.0",
+    "mocha": "^8.2.1"
   }
 }
