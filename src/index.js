@@ -129,39 +129,58 @@ async function getAboveTheFoldHTML(page, height) {
  * @return {Promise<{ aboveTheFold: string, aboveTheFoldMob: string, css: string }>} Result resources
  */
 async function puppeteerResources(options) {
+  const cache = { };
   const browser = await puppeteer.launch();
   let cssString = '';
-
   // Puppeteer page with desktop version
-  const page = await browser.newPage();
-  await page.setDefaultNavigationTimeout(120000);
-  await page.setViewport({ width: 1920, height: 1200 });
-  if (options.type === 'HTML') {
-    await page.setContent(options.html, { waitUntil: 'networkidle2'	});
-    await page.addStyleTag({ content: options.css });
-  } else {
-    await page.goto(options.url, { waitUntil: 'networkidle2' });
-    let styleHrefs = await page.$$eval(':not(noscript) > link[rel=stylesheet]', elems => Array.from(elems).map(s => s.href));
-    if (!options.enableGoogleFonts) {
-      styleHrefs = styleHrefs.filter(href => href.indexOf('fonts.googleapis.com') === -1);
+  const context = await browser.createIncognitoBrowserContext();
+  const page = await context.newPage();
+  await page.setRequestInterception(true);
+  page.on('request', interceptedRequest => {
+    if (interceptedRequest.url().indexOf('.css') !== -1) {
+      cache[interceptedRequest.url()] = interceptedRequest;
     }
-    // Concatenate all styles
-    await Promise.all(styleHrefs.map(async href => {
-      let { data } = await get(href);
-      cssString += data;
-    }));
-  }
-
+    interceptedRequest.continue();
+  });
   // Puppeteer page with mobile version
-  const page2 = await browser.newPage();
-  await page2.setDefaultNavigationTimeout(60000);
-  await page2.setViewport({ width: 480, height: 650, isMobile: true, hasTouch: true });
-  if (options.type === 'HTML') {
-    await page2.setContent(options.html, { waitUntil: 'networkidle2' });
-    await page2.addStyleTag({ content: options.css });
-  } else {
-    await page2.goto(options.url, { waitUntil: 'networkidle2' });
-  }
+  const context2 = await browser.createIncognitoBrowserContext();
+  const page2 = await context2.newPage();
+
+  await Promise.all([new Promise(async (res, rej) => {
+    await page.setDefaultNavigationTimeout(120000);
+    await page.setViewport({ width: 1920, height: 1200 });
+    if (options.type === 'HTML') {
+      await page.setContent(options.html, { waitUntil: 'networkidle2'	});
+      await page.addStyleTag({ content: options.css });
+    } else {
+      await page.goto(options.url, { waitUntil: 'networkidle2' });
+      let styleHrefs = await page.$$eval(':not(noscript) > link[rel=stylesheet]', elems => Array.from(elems).map(s => s.href));
+      if (!options.enableGoogleFonts) {
+        styleHrefs = styleHrefs.filter(href => href.indexOf('fonts.googleapis.com') === -1);
+      }
+      // Concatenate all styles
+      await Promise.all(styleHrefs.map(async href => {
+        if (cache[href]) {
+          let data = await cache[href].response().text();
+          cssString += data;
+        } else {
+          let { data } = await get(href);
+          cssString += data;
+        }
+      }));
+    }
+    res();
+  }), new Promise(async (res, rej) => {
+    await page2.setDefaultNavigationTimeout(60000);
+    await page2.setViewport({ width: 480, height: 650, isMobile: true, hasTouch: true });
+    if (options.type === 'HTML') {
+      await page2.setContent(options.html, { waitUntil: 'networkidle2' });
+      await page2.addStyleTag({ content: options.css });
+    } else {
+      await page2.goto(options.url, { waitUntil: 'networkidle2' });
+    }
+    res();
+  })]);
 
   const aboveTheFold = await getAboveTheFoldHTML(page, 1200);
   const aboveTheFoldMob = await getAboveTheFoldHTML(page2, 650);
