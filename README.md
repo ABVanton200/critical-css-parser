@@ -1,6 +1,6 @@
 # critical-css-parser
 
-[![install size](https://packagephobia.now.sh/badge?p=critical-css-parser)](https://packagephobia.now.sh/result?p=critical-css-parser)
+[![minified size](https://badgen.net/bundlephobia/min/critical-css-parser)](https://www.npmjs.com/package/critical-css-parser)
 
 > **Critical-css-parser** allows you to receive critical (**above-the-fold**) and the rest CSS.
 > It might be helpful to speed up initial rendering of a web page. **[More information](https://web.dev/defer-non-critical-css/)**.
@@ -35,14 +35,14 @@ const criticalCSSParser = require('critical-css-parser');
 
     const result = await criticalCSSParser({
         type: 'URL',
-        URL: 'https://enigmatic-dawn-63122.herokuapp.com/', // try to check your site
+        URL: 'https://abvcss.github.io/abvcss-website/', // try to check your site
         enableGoogleFonts: false,
         whitelist: /#foo|\.bar/
     });
 
     console.log(result.critical); // ''
 
-    console.log(result.rest); // '.Toastify__toast-container{z-index:9999;position:fixed; ...'
+    console.log(result.rest); // ':not(pre)>code[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{'
 
 })();
 ```
